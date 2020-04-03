@@ -1,0 +1,75 @@
+.hidden {
+  display: none;
+}
+
+.season {
+  padding: 1rem 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, ubuntu, verdana, helvetica, sans-serif;
+  color: white;
+
+  .season-title {
+    font-size: 2rem;
+    padding: .5rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 0.05rem solid #ffffff3b;
+
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    .season-min-max {
+      padding: 0 .25rem;
+      cursor: pointer;
+
+      .min-icon, .max-icon {
+        &.hidden {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .episodes {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    &.hidden {
+      display: none;
+    }
+
+    .episodes-left, .episodes-right {
+      width: 49%;
+    }
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .season {
+    .episodes {
+      .episodes-left, .episodes-right {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .season {
+    padding: .5rem 3rem;
+
+    .season-title {
+      font-size: 1.25rem;
+
+      .season-min-max {
+        padding: 0 0.65rem;
+      }
+    }
+
+    .episodes {
+      //display: none;
+    }
+  }
+}
+

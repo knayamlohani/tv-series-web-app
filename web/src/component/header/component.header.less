@@ -1,0 +1,45 @@
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  color: white;
+  background-color: #0000008a;
+  font-family: -apple-system, BlinkMacSystemFont, ubuntu, verdana, helvetica, sans-serif;
+  padding: 0.5rem 2.5rem;
+  font-size: 1.5rem;
+  height: 3rem;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  div {
+    padding: .15rem 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .search-icon {
+    cursor: pointer;
+  }
+
+  .separator {
+    padding: 0 .5rem 0 1rem
+  }
+}
+
+
+@media (max-width: 750px) {
+  .header {
+    //padding: 0.5rem 0;
+  }
+}

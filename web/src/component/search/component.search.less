@@ -1,0 +1,174 @@
+.search-component {
+  padding-top: 10rem;
+
+  .search-form {
+    margin: 0 25% 2rem 25%;
+
+    .search-input-and-icons-wrapper {
+
+      display: flex;
+      flex-flow: row nowrap;
+
+      width: 100%;
+      position: relative;
+
+      .search-input-wrapper {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+
+
+        .search-input {
+          width: 100%;
+          text-align: center;
+          font-size: 1.5rem;
+          padding: 0.75rem;
+          background-color: #0000008a;
+          color: white;
+          border-radius: 0.45rem;
+          border: 0.07rem solid rgba(255, 255, 255, 0.57);
+
+          &:focus {
+            outline-color: rgba(255, 255, 255, 0.57);
+          }
+
+          &::placeholder {
+            color: white;
+          }
+        }
+      }
+
+      .search-icon-wrapper, .exit-search-icon-wrapper {
+        padding: .8rem;
+        position: absolute;
+
+        &.search-icon-wrapper {
+          right: 0;
+        }
+
+        &.exit-search-icon-wrapper {
+          left: 0;
+          padding: .7rem;
+
+          &.hidden {
+            display: none;
+          }
+        }
+
+        cursor: pointer;
+
+        .search-icon, .exit-search-icon {
+          font-size: 1.5rem;
+          color: white;
+
+          &.exit-search-icon {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  .blur-component {
+    display: none;
+    z-index: -5;
+    filter: blur(10px);
+  }
+
+  .search-component-body {
+    z-index: 15;
+  }
+
+  //background: rgba(0, 0, 0, 0.5) url("./../../img/background_wall.jpg");
+  background: rgba(0, 0, 0, 0.5) url("https://res.cloudinary.com/knayamlohani/image/upload/v1585761622/tvseries-web-app/background_wall_gt1nzx.jpg");
+  min-height: 100vh;
+  background-size: contain;
+
+
+  &.active {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    //margin-top: 3rem;
+
+    .blur-component {
+      display: block;
+    }
+  }
+
+
+  .searching-series {
+    color: white;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, ubuntu, verdana, helvetica, sans-serif;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    margin-top: 15rem;
+
+    .text {
+      padding: 1rem;
+      font-size: 2rem;
+    }
+
+    .icon {
+      font-size: 3rem;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .search-component {
+    background-size: cover;
+  }
+}
+
+@media (max-width: 750px) {
+  .search-component {
+    position: fixed;
+    padding-top: 3rem;
+    width: 100%;
+    background-size: auto;
+
+    .search-form {
+      margin: 0;
+      top: 3rem;
+      left: 0;
+      position: fixed;
+      width: 100%;
+      z-index: 2;
+
+      .search-input-and-icons-wrapper {
+
+
+        .search-input-wrapper {
+          .search-input {
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+
+            &:focus {
+              border: 0.07rem solid rgba(255, 255, 255, 0.25);
+              border-left: none;
+              border-right: none;
+              outline-color: rgba(255, 255, 255, 0.25);
+            }
+
+            &::placeholder {
+            }
+          }
+        }
+      }
+
+    }
+
+    .searching-series {
+      margin-top: 20rem;
+    }
+  }
+
+}
