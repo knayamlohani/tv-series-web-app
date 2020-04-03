@@ -1,4 +1,9 @@
 {
+
+    "engines": {
+        "node": "10.x"
+    },
+
     "dependencies": {
         "@babel/core": "^7.6.4",
         "@babel/plugin-proposal-class-properties": "^7.7.4",
@@ -46,6 +51,7 @@
         "dev:web-build": "rm -rf web/dist && webpack --config webpack.frontend.config.js --mode=development --watch",
 
         "prod:server-build": "rm -rf server/dist && webpack --config webpack.server.config.js --mode=production --watch",
-        "prod:web-build": "rm -rf web/dist && webpack --config webpack.frontend.config.js --mode=production --watch"
+        "prod:web-build": "rm -rf web/dist && webpack --config webpack.frontend.config.js --mode=production --watch",
+        "start": "node server/dist/server.dist.js"
     }
 }
