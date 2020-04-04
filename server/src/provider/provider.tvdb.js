@@ -166,6 +166,10 @@ async function getCastForSeriesWithIdOnly(options) {
 
 // returns tvdb authorization token
 const getAuthorizationHeader = () => {
+    if(authToken == null) {
+        getAuthToken();
+    }
+
     return {
         'Authorization': `Bearer ${authToken}`
     }
