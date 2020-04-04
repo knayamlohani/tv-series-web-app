@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require('body-parser')
 
 const appConfig = require('./config/config-loader').applicationConfig;
-const PORT = appConfig.port || '5000';
+const PORT = process.env.PORT || '5000';
 
 // app.use(express.static(__dirname + './../../web/src/'));
 app.use(express.static(__dirname + './../../web/dist/'));
