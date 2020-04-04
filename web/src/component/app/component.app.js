@@ -13,7 +13,9 @@ import AppCSS from './component.app.less'
 import {BrowserRouter, Route} from "react-router-dom";
 import SearchComponent from "../search/component.search";
 
-const SeriesComponent = React.lazy(() => import("./../series/component.series"))
+// const SeriesComponent = React.lazy(() => import("./../series/component.series"))
+
+import SeriesComponent from "./../series/component.series"
 
 class AppComponent extends Component {
     constructor(props) {
@@ -27,7 +29,7 @@ class AppComponent extends Component {
             <React.Fragment>
                 <div className={"app-component"}>
 
-                    <React.Suspense fallback={"loading"}>
+                    {/*<React.Suspense fallback={"loading"}>*/}
                         <BrowserRouter>
                             <HeaderComponent currentSeries={this.props.tvSeries.currentSeries}/>
                             <Route
@@ -70,7 +72,7 @@ class AppComponent extends Component {
                             />
 
                         </BrowserRouter>
-                    </React.Suspense>
+                    {/*</React.Suspense>*/}
                 </div>
             </React.Fragment>
         )
