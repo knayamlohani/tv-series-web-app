@@ -61,7 +61,7 @@ class AppComponent extends Component {
                                         dispatchSearchSeriesByName={this.props.searchSeriesByName}
                                         dispatchSetSearchingSeriesStatus={this.props.setSearchingSeriesStatus}
                                         seriesSearchResults={this.props.tvSeries.seriesSearchResults}
-                                        isSearchingSeries={this.props.tvSeries.isSearchingSeries}
+                                        searchSeriesStatus={this.props.tvSeries.searchSeriesStatus}
                                         dispatchSetCurrentSeriesBasicInfo={this.props.setCurrentSeriesBasicInfo}
                                         dispatchUpdateSearchComponentIsActiveState={this.props.updateSearchComponentIsActiveState}
                                         isSearchComponentActive={this.props.app.isSearchComponentActive}

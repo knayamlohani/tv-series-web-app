@@ -1,6 +1,6 @@
 import * as TVSERIES_ACTION from './../action/redux.action.tvseries'
 import * as TVSERIES_ACTION_STATUS_INDICATOR from './../action/redux.action.tvseries.indicator'
-
+import * as SEARCH_STATUS from './../../constant/constant.search-status'
 
 const tvseriesReducer = (state = {}, action) => {
 
@@ -25,19 +25,7 @@ const tvseriesReducer = (state = {}, action) => {
         case TVSERIES_ACTION_STATUS_INDICATOR.SET_SEARCHING_SERIES_STATUS:
             return {
                 ...state,
-                isSearchingSeries: action.payload.isSearchingSeries
-            };
-
-        case TVSERIES_ACTION_STATUS_INDICATOR.SEARCHING_SERIES_SUCCESS:
-            return {
-                ...state,
-                isSearchingSeries: false
-            };
-
-        case TVSERIES_ACTION_STATUS_INDICATOR.SEARCHING_SERIES_FAILURE:
-            return {
-                ...state,
-                isSearchingSeries: false
+                searchSeriesStatus: action.payload.searchSeriesStatus
             };
 
         case TVSERIES_ACTION.SET_ACTIVE_EPISODE_KEY:

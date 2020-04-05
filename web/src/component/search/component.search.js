@@ -4,6 +4,7 @@ import SearchComponentCSS from './component.search.less'
 import SearchResultsComponent from '../search-result/search-results/component.searchResults'
 import BlurComponent from "../blur/component.blur";
 import qs from 'qs'
+import {SEARCHING, UNKNOWN} from "../../constant/constant.search-status";
 
 export default class SearchComponent extends Component {
 
@@ -24,7 +25,7 @@ export default class SearchComponent extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        const {isSearchComponentActive} = this.props;
+        const {searchSeriesStatus} = this.props;
     }
 
     handleSearchInputChange = (e) => {
@@ -69,7 +70,7 @@ export default class SearchComponent extends Component {
 
         this.props.dispatchSetSearchingSeriesStatus({
             payload: {
-                isSearchingSeries: false
+                searchSeriesStatus: UNKNOWN
             }
         });
 
@@ -88,7 +89,7 @@ export default class SearchComponent extends Component {
         return (
             <React.Fragment>
                 {
-                    this.props.isSearchingSeries &&
+                    this.props.searchSeriesStatus === SEARCHING &&
                     <div className="searching-series">
                         <div className={"icon"}><i className={"fa fa-circle-o-notch fa-spin"} aria-hidden="true"/></div>
                         <div className={"text"}>Searching ...</div>
@@ -101,6 +102,7 @@ export default class SearchComponent extends Component {
     render() {
         return (
             <div className={"search-component " + (this.props?.isSearchComponentActive ? "active" : "")}>
+
                 <div className={"search-component-body"}>
                     <form onSubmit={this.searchByInput} className="search-form">
                         <div className={"search-input-and-icons-wrapper"}>

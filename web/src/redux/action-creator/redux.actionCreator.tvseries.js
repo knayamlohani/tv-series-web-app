@@ -1,6 +1,7 @@
 import * as TVSERIES_ACTION from '../action/redux.action.tvseries';
 import * as TVSERIES_ACTION_STATUS_INDICATOR from '../action/redux.action.tvseries.indicator'
 import * as seriesMappingService from '../../services/service.series'
+import * as SEARCH_STATUS from './../../constant/constant.search-status'
 
 
 import axios from 'axios'
@@ -81,12 +82,7 @@ export const searchSeriesByName = (options) => {
                 seriesSearchResults: []
             }
         }));
-        dispatch(setSearchingSeriesStatus({
-            payload: {
-                isSearchingSeries: true
-            }
-        }));
-
+        dispatch(searchingSeries());
         axios.get(`/api/series?name=${options.payload.series.name}`).then((response) => {
             console.log(response);
             dispatch(setSeriesSearchResults({
@@ -95,6 +91,9 @@ export const searchSeriesByName = (options) => {
                 }
             }));
             dispatch(searchingSeriesSuccess());
+        }).catch((response) => {
+            console.log(response);
+            dispatch(searchingSeriesFailure())
         })
 
     }
@@ -183,6 +182,15 @@ export const getCastForCurrentSeries = (options) => {
 
 // action indicators
 
+export const searchingSeries = (options) => {
+    return {
+        type: TVSERIES_ACTION_STATUS_INDICATOR.SET_SEARCHING_SERIES_STATUS,
+        payload: {
+            searchSeriesStatus: SEARCH_STATUS.SEARCHING
+        }
+    };
+};
+
 export const setSearchingSeriesStatus = (options) => {
     return {
         type: TVSERIES_ACTION_STATUS_INDICATOR.SET_SEARCHING_SERIES_STATUS,
@@ -192,14 +200,26 @@ export const setSearchingSeriesStatus = (options) => {
 
 export const searchingSeriesSuccess = (options) => {
     return {
-        type: TVSERIES_ACTION_STATUS_INDICATOR.SEARCHING_SERIES_SUCCESS,
-        ...options
+        type: TVSERIES_ACTION_STATUS_INDICATOR.SET_SEARCHING_SERIES_STATUS,
+        payload: {
+            searchSeriesStatus: SEARCH_STATUS.SEARCH_SUCCESS
+        }
     };
+
+    // return {
+    //     type: TVSERIES_ACTION_STATUS_INDICATOR.SET_SEARCHING_SERIES_STATUS,
+    //     payload: {
+    //         ...options.payload,
+    //         searchSeriesStatus: SEARCH_STATUS.SEARCH_SUCCESS
+    //     }
+    // };
 };
 
 export const searchingSeriesFailure = (options) => {
     return {
-        type: TVSERIES_ACTION_STATUS_INDICATOR.SEARCHING_SERIES_FAILURE,
-        ...options
+        type: TVSERIES_ACTION_STATUS_INDICATOR.SET_SEARCHING_SERIES_STATUS,
+        payload: {
+            searchSeriesStatus: SEARCH_STATUS.SEARCH_FAILURE
+        }
     };
 };
